@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101d1b" />
+    <meta name="description" content="Train a tiny, explainable AI to sort your notes. Your examples stay in your browser." />
+    <title>SignalGarden — grow an AI that thinks with you</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="SignalGarden home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>SignalGarden<span class="brand-period">.</span></span>
+        </a>
+        <div class="header-right">
+          <span class="privacy-pill"><span class="live-dot"></span> Private by design</span>
+          <a class="header-link" href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> A little intelligence, grown by you</div>
+            <h1 id="hero-title">Give your ideas<br /><em>a place to grow.</em></h1>
+            <p>Teach SignalGarden how you sort your thoughts. Add a few examples, then watch your tiny AI recognize new ones in an instant.</p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#playground">Try the playground <span aria-hidden="true">↗</span></a>
+              <span class="hero-note">No account. No API key. Just your browser.</span>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+            <div class="hero-core"><span class="core-spark">✳</span><span>your<br />ideas</span></div>
+            <div class="orbit-label label-one"><span class="tiny-dot dot-lime"></span> Build</div>
+            <div class="orbit-label label-two"><span class="tiny-dot dot-peach"></span> Reflect</div>
+            <div class="orbit-label label-three"><span class="tiny-dot dot-blue"></span> Explore</div>
+            <div class="orbit-label label-four"><span class="tiny-dot dot-purple"></span> Share</div>
+            <div class="art-star star-one">✦</div><div class="art-star star-two">✳</div>
+          </div>
+        </section>
+
+        <div class="section-heading" id="playground">
+          <div><span class="section-kicker">01 / THE PLAYGROUND</span><h2>See what it learns.</h2></div>
+          <p>Start with the sample garden, or make it completely yours.</p>
+        </div>
+
+        <section class="workspace" aria-label="AI playground">
+          <div class="panel classify-panel">
+            <div class="panel-heading"><div><span class="panel-icon icon-input" aria-hidden="true">✳</span><h3>A thought to sort</h3></div><span class="panel-index">INPUT / 01</span></div>
+            <label class="field-label" for="thought-input">Type whatever is on your mind</label>
+            <textarea id="thought-input" maxlength="600" placeholder="I want to prototype a tiny app that helps my friends discover new music..." spellcheck="true"></textarea>
+            <div class="input-meta"><span>Try an idea, a journal note, or a task.</span><span id="character-count">0 / 600</span></div>
+            <div class="teach-box">
+              <div><strong>Teach it this thought</strong><span>Save this as a labeled example so the model can learn.</span></div>
+              <div class="teach-actions"><label class="sr-only" for="teach-label">Label for this thought</label><select id="teach-label"></select><button id="teach-button" class="button button-dark" type="button">Add example <span aria-hidden="true">↗</span></button></div>
+            </div>
+          </div>
+
+          <div class="panel result-panel">
+            <div class="panel-heading"><div><span class="panel-icon icon-result" aria-hidden="true">↗</span><h3>What the garden sees</h3></div><span class="panel-index">OUTPUT / 02</span></div>
+            <div id="result-content" class="result-content" aria-live="polite"></div>
+            <div class="result-bottom"><span class="pulse-indicator"><span></span> Learning from <strong id="example-count">0</strong> examples</span><span>Runs in your browser</span></div>
+          </div>
+        </section>
+
+        <section class="garden-section" aria-labelledby="garden-title">
+          <div class="section-heading garden-heading">
+            <div><span class="section-kicker">02 / YOUR TRAINING GARDEN</span><h2 id="garden-title">Make it your own.</h2></div>
+            <p>Every labeled note helps the model understand your world.</p>
+          </div>
+          <div class="garden-grid">
+            <div class="panel garden-panel">
+              <div class="garden-toolbar"><div><h3>Training examples</h3><p>These are the thoughts your AI learns from.</p></div><span class="count-badge" id="garden-count">0 notes</span></div>
+              <div id="category-filters" class="filters" role="group" aria-label="Filter training examples"></div>
+              <ul id="example-list" class="example-list"></ul>
+              <div class="add-example">
+                <label class="field-label" for="example-input">Plant a new example</label>
+                <textarea id="example-input" rows="2" maxlength="600" placeholder="A thought your model should learn from..."></textarea>
+                <div class="add-example-row"><label class="sr-only" for="example-label">Example label</label><select id="example-label"></select><button id="example-button" type="button" class="button button-accent">Add to garden <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </div>
+
+            <aside class="side-stack">
+              <div class="panel categories-panel"><div class="aside-heading"><span class="aside-icon" aria-hidden="true">◈</span><h3>Your categories</h3></div><p>Give your thoughts a few homes. You can add any category you like.</p><div id="category-list" class="category-list"></div><form id="category-form" class="category-form"><label class="sr-only" for="category-input">New category name</label><input id="category-input" type="text" maxlength="24" placeholder="New category name" autocomplete="off" /><button type="submit" aria-label="Add category">+</button></form></div>
+              <div class="panel data-panel"><div class="aside-heading"><span class="aside-icon data-icon" aria-hidden="true">⇅</span><h3>Your data, your call</h3></div><p>Your examples stay on this device. Save a copy or bring your garden to another browser.</p><div class="data-actions"><button id="export-button" type="button" class="outline-button">Export garden <span aria-hidden="true">↓</span></button><button id="import-button" type="button" class="outline-button">Import garden <span aria-hidden="true">↑</span></button></div><input id="import-file" class="sr-only" type="file" accept="application/json,.json" /><button id="reset-button" type="button" class="text-button">Reset to sample garden</button></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="how-section" aria-labelledby="how-title">
+          <div><span class="section-kicker">BEHIND THE MAGIC</span><h2 id="how-title">Small model.<br /><em>Clear thinking.</em></h2></div>
+          <div class="how-copy"><p>SignalGarden uses a real Naive Bayes text classifier. It learns which words tend to appear in each category, then estimates where a new thought belongs.</p><p>The highlighted words show what influenced its top prediction. Predictions are estimates, so give it more examples when it gets something wrong.</p><a href="https://github.com/Haseebabidi/signal-garden-ai" target="_blank" rel="noopener noreferrer">Explore the open-source code <span aria-hidden="true">↗</span></a></div>
+        </section>
+      </main>
+      <footer class="site-footer"><span class="footer-brand">SignalGarden<span>.</span></span><span>Founded by <a href="https://github.com/Haseebabidi" target="_blank" rel="noopener noreferrer">Haseeb Abidi</a></span><span>Made for curious minds. Grown locally.</span></footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
